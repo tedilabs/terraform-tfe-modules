@@ -1,0 +1,6 @@
+# Modules
+":floppy_disk: project":
+- modules/project/**/*
+
+":floppy_disk: workspace":
+- modules/workspace/**/*
