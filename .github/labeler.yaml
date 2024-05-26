@@ -1,6 +1,10 @@
 # Modules
 ":floppy_disk: project":
-- modules/project/**/*
+- changed-files:
+  - any-glob-to-any-file:
+    - modules/project/**/*
 
 ":floppy_disk: workspace":
-- modules/workspace/**/*
+- changed-files:
+  - any-glob-to-any-file:
+    - modules/workspace/**/*
