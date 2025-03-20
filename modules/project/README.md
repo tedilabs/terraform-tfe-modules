@@ -6,7 +6,7 @@ This module creates following resources.
 - `tfe_project_policy_set` (optional)
 - `tfe_project_variable_set` (optional)
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -50,4 +50,4 @@ No modules.
 | <a name="output_id"></a> [id](#output\_id) | The ID of the project. |
 | <a name="output_name"></a> [name](#output\_name) | The name of the project. |
 | <a name="output_organization"></a> [organization](#output\_organization) | The name of the organization. |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->

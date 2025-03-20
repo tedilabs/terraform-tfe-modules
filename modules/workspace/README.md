@@ -6,7 +6,7 @@ This module creates following resources.
 - `tfe_workspace_policy_set` (optional)
 - `tfe_workspace_variable_set` (optional)
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -54,4 +54,4 @@ No modules.
 | <a name="output_project"></a> [project](#output\_project) | The project which the workspace belongs to. |
 | <a name="output_statistics"></a> [statistics](#output\_statistics) | The statistics of the workspace. |
 | <a name="output_url"></a> [url](#output\_url) | The URL to the browsable HTML overview of the workspace. |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->
