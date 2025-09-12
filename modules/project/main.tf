@@ -7,6 +7,9 @@ resource "tfe_project" "this" {
 
   name        = var.name
   description = var.description
+
+  tags                   = var.tags
+  ignore_additional_tags = var.exclusive_tags_enabled
 }
 
 

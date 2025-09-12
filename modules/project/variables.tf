@@ -35,3 +35,17 @@ variable "variable_set" {
   default     = null
   nullable    = true
 }
+
+variable "tags" {
+  description = "(Optional) A map of tags to add to all resources."
+  type        = map(string)
+  default     = {}
+  nullable    = false
+}
+
+variable "exclusive_tags_enabled" {
+  description = "(Optional) Whether to explicitly ignore which are not defined by this module. Defaults to `true`."
+  type        = bool
+  default     = true
+  nullable    = false
+}
