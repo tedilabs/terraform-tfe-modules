@@ -25,6 +25,24 @@ variable "description" {
   nullable    = false
 }
 
+variable "execution_mode" {
+  description = <<EOF
+  (Optional) The execution mode for the workspace. Valid values are `local`, `remote` or `agent`. When set to `local`, the workspace will be used for state storage only.
+  NOTE: If you omit this attribute, the resource configures the workspace to use your organization's default execution mode (which in turn defaults to `remote`).
+  EOF
+  type        = string
+  default     = null
+  nullable    = true
+
+  validation {
+    condition = anytrue([
+      var.execution_mode == null,
+      contains(["local", "remote", "agent"], var.execution_mode),
+    ])
+    error_message = "Value for `execution_mode` must be one of `local`, `remote`, `agent`, or null."
+  }
+}
+
 variable "policy_set" {
   description = <<EOF
   (Optional) The ID of the policy set to configure.
@@ -41,4 +59,18 @@ variable "variable_set" {
   type        = string
   default     = null
   nullable    = true
+}
+
+variable "tags" {
+  description = "(Optional) A map of tags to add to all resources."
+  type        = map(string)
+  default     = {}
+  nullable    = false
+}
+
+variable "exclusive_tags_enabled" {
+  description = "(Optional) Whether to explicitly ignore which are not defined by this module. Defaults to `true`."
+  type        = bool
+  default     = true
+  nullable    = false
 }

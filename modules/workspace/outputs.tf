@@ -30,6 +30,21 @@ output "url" {
   value       = tfe_workspace.this.html_url
 }
 
+output "execution_mode" {
+  description = "The execution mode for the workspace."
+  value       = tfe_workspace_settings.this.execution_mode
+}
+
+output "policy_set" {
+  description = "The ID of the policy set configured."
+  value       = one(tfe_workspace_policy_set.this[*].policy_set_id)
+}
+
+output "variable_set" {
+  description = "The ID of the variable set configured."
+  value       = one(tfe_workspace_variable_set.this[*].variable_set_id)
+}
+
 output "statistics" {
   description = "The statistics of the workspace."
   value = {

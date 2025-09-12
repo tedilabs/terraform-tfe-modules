@@ -8,6 +8,27 @@ resource "tfe_workspace" "this" {
 
   name        = var.name
   description = var.description
+
+  tags                   = var.tags
+  ignore_additional_tags = var.exclusive_tags_enabled
+}
+
+
+###################################################
+# Workspace Settings in Terraform Enterprise
+###################################################
+
+resource "tfe_workspace_settings" "this" {
+  workspace_id = tfe_workspace.this.id
+
+  execution_mode = var.execution_mode
+
+  lifecycle {
+    ignore_changes = [
+      description,
+      tags,
+    ]
+  }
 }
 
 
