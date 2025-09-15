@@ -37,7 +37,7 @@ variable "execution_mode" {
   validation {
     condition = anytrue([
       var.execution_mode == null,
-      contains(["local", "remote", "agent"], var.execution_mode),
+      var.execution_mode != null && contains(["local", "remote", "agent"], var.execution_mode),
     ])
     error_message = "Value for `execution_mode` must be one of `local`, `remote`, `agent`, or null."
   }
