@@ -7,6 +7,7 @@
 Terraform module to manage all of things on Terraform Enterprise (Terraform Cloud) organization.
 
 - [project](./modules/project/)
+- [team](./modules/team/)
 - [workspace](./modules/workspace/)
 
 

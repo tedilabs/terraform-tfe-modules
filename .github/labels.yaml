@@ -44,5 +44,8 @@
   description: "This issue or pull request is related to project module."
   name: ":floppy_disk: project"
 - color: "fbca04"
+  description: "This issue or pull request is related to team module."
+  name: ":floppy_disk: team"
+- color: "fbca04"
   description: "This issue or pull request is related to workspace module."
   name: ":floppy_disk: workspace"

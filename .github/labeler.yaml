@@ -4,6 +4,11 @@
   - any-glob-to-any-file:
     - modules/project/**/*
 
+":floppy_disk: team":
+- changed-files:
+  - any-glob-to-any-file:
+    - modules/team/**/*
+
 ":floppy_disk: workspace":
 - changed-files:
   - any-glob-to-any-file:
