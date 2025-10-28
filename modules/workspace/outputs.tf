@@ -52,6 +52,19 @@ output "statistics" {
   }
 }
 
+output "team_access" {
+  description = "The team access configurations for the workspace."
+  value = [
+    for access in tfe_team_access.this : {
+      team = {
+        id   = access.team_id
+        name = local.team_names[access.team_id]
+      }
+      role = upper(access.access)
+    }
+  ]
+}
+
 # output "debug" {
 #   value = {
 #     for k, v in tfe_workspace.this :

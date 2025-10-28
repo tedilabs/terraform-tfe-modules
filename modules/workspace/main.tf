@@ -1,3 +1,15 @@
+data "tfe_teams" "this" {
+  organization = var.organization
+}
+
+locals {
+  team_names = zipmap(
+    values(data.tfe_teams.this.ids),
+    keys(data.tfe_teams.this.ids),
+  )
+}
+
+
 ###################################################
 # Workspace in Terraform Enterprise
 ###################################################
@@ -53,4 +65,21 @@ resource "tfe_workspace_variable_set" "this" {
 
   workspace_id    = tfe_workspace.this.id
   variable_set_id = var.variable_set
+}
+
+
+###################################################
+# Team Access for Workspace
+###################################################
+
+resource "tfe_team_access" "this" {
+  for_each = {
+    for access in var.team_access :
+    access.team => access
+  }
+
+  workspace_id = tfe_workspace.this.id
+
+  team_id = each.key
+  access  = lower(each.value.role)
 }

@@ -6,6 +6,7 @@ This module creates following resources.
 - `tfe_workspace_settings`
 - `tfe_workspace_policy_set` (optional)
 - `tfe_workspace_variable_set` (optional)
+- `tfe_team_access` (optional)
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -29,10 +30,12 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [tfe_team_access.this](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/team_access) | resource |
 | [tfe_workspace.this](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/workspace) | resource |
 | [tfe_workspace_policy_set.this](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/workspace_policy_set) | resource |
 | [tfe_workspace_settings.this](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/workspace_settings) | resource |
 | [tfe_workspace_variable_set.this](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/workspace_variable_set) | resource |
+| [tfe_teams.this](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/data-sources/teams) | data source |
 
 ## Inputs
 
@@ -46,6 +49,7 @@ No modules.
 | <a name="input_policy_set"></a> [policy\_set](#input\_policy\_set) | (Optional) The ID of the policy set to configure. | `string` | `null` | no |
 | <a name="input_project"></a> [project](#input\_project) | (Optional) The ID of the project where the workspace should be created. | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | (Optional) A map of tags to add to all resources. | `map(string)` | `{}` | no |
+| <a name="input_team_access"></a> [team\_access](#input\_team\_access) | (Optional) A configurations for team access to the workspace. Each item of `team_access` block as defined below.<br/>    (Required) `team` - The ID of the team to grant access to the workspace.<br/>    (Optional) `role` - The role to assign to the team for the workspace. Valid values are `READ`, `PLAN`, `WRITE`, `ADMIN`, or `CUSTOM`. Defaults to `READ`.<br/>      `READ` - Baseline permissions for reading a workspace<br/>      `PLAN` - Read permissions plus the ability to create runs<br/>      `WRITE` - Read, plan and write permissions<br/>      `ADMIN` - Full control of the workspace<br/>      `CUSTOM` - Create a custom permission set for this team | <pre>list(object({<br/>    team = string<br/>    role = optional(string, "READ")<br/>  }))</pre> | `[]` | no |
 | <a name="input_variable_set"></a> [variable\_set](#input\_variable\_set) | (Optional) A name of the variable set to configure. | `string` | `null` | no |
 
 ## Outputs
@@ -60,6 +64,7 @@ No modules.
 | <a name="output_policy_set"></a> [policy\_set](#output\_policy\_set) | The ID of the policy set configured. |
 | <a name="output_project"></a> [project](#output\_project) | The project which the workspace belongs to. |
 | <a name="output_statistics"></a> [statistics](#output\_statistics) | The statistics of the workspace. |
+| <a name="output_team_access"></a> [team\_access](#output\_team\_access) | The team access configurations for the workspace. |
 | <a name="output_url"></a> [url](#output\_url) | The URL to the browsable HTML overview of the workspace. |
 | <a name="output_variable_set"></a> [variable\_set](#output\_variable\_set) | The ID of the variable set configured. |
 <!-- END_TF_DOCS -->
