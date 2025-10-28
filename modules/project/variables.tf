@@ -49,3 +49,30 @@ variable "exclusive_tags_enabled" {
   default     = true
   nullable    = false
 }
+
+variable "team_access" {
+  description = <<EOF
+  (Optional) A configurations for team access to the project. Each item of `team_access` block as defined below.
+    (Required) `team` - The ID of the team to grant access to the project.
+    (Optional) `role` - The role to assign to the team for the project. Valid values are `READ`, `WRITE`, `MAINTAIN`, `ADMIN`, or `CUSTOM`. Defaults to `READ`.
+      `READ` - Can view everything in the project
+      `WRITE` - Can update everything in the project
+      `MAINTAIN` - Full control of everything in the project, but not the project itself
+      `ADMIN` - Full control of the project
+      `CUSTOM` - Create a custom permission set for this team
+  EOF
+  type = list(object({
+    team = string
+    role = optional(string, "READ")
+  }))
+  default  = []
+  nullable = false
+
+  validation {
+    condition = alltrue([
+      for access in var.team_access :
+      contains(["READ", "WRITE", "MAINTAIN", "ADMIN", "CUSTOM"], access.role)
+    ])
+    error_message = "Valid values for `role` are `READ`, `WRITE`, `MAINTAIN`, `ADMIN`, or `CUSTOM`."
+  }
+}

@@ -28,6 +28,19 @@ output "variable_set" {
   value       = one(tfe_project_variable_set.this[*].variable_set_id)
 }
 
+output "team_access" {
+  description = "The team access configurations for the project."
+  value = [
+    for access in tfe_team_project_access.this : {
+      team = {
+        id   = access.team_id
+        name = local.team_names[access.team_id]
+      }
+      role = upper(access.access)
+    }
+  ]
+}
+
 # output "debug" {
 #   value = {
 #     for k, v in tfe_project.this :

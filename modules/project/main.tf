@@ -1,3 +1,15 @@
+data "tfe_teams" "this" {
+  organization = var.organization
+}
+
+locals {
+  team_names = zipmap(
+    values(data.tfe_teams.this.ids),
+    keys(data.tfe_teams.this.ids),
+  )
+}
+
+
 ###################################################
 # Project in Terraform Enterprise
 ###################################################
@@ -34,4 +46,21 @@ resource "tfe_project_variable_set" "this" {
 
   project_id      = tfe_project.this.id
   variable_set_id = var.variable_set
+}
+
+
+###################################################
+# Team Access for Project
+###################################################
+
+resource "tfe_team_project_access" "this" {
+  for_each = {
+    for access in var.team_access :
+    access.team => access
+  }
+
+  project_id = tfe_project.this.id
+
+  team_id = each.key
+  access  = lower(each.value.role)
 }
