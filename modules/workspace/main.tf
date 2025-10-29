@@ -14,6 +14,12 @@ locals {
 # Workspace in Terraform Enterprise
 ###################################################
 
+# INFO: Not supported attributes
+# INFO: Deprecated
+# - `operations`
+# INFO: Use a separate resource
+# - `global_remote_state`
+# - `remote_state_consumer_ids`
 resource "tfe_workspace" "this" {
   organization = var.organization
   project_id   = var.project
@@ -21,8 +27,20 @@ resource "tfe_workspace" "this" {
   name        = var.name
   description = var.description
 
+  queue_all_runs = var.queue_all_runs
+
+  ssh_key_id = var.ssh_key
+
   tags                   = var.tags
   ignore_additional_tags = var.exclusive_tags_enabled
+
+  lifecycle {
+    ignore_changes = [
+      global_remote_state,
+      operations,
+      remote_state_consumer_ids,
+    ]
+  }
 }
 
 
@@ -33,7 +51,9 @@ resource "tfe_workspace" "this" {
 resource "tfe_workspace_settings" "this" {
   workspace_id = tfe_workspace.this.id
 
-  execution_mode = var.execution_mode
+  execution_mode            = var.execution_mode
+  global_remote_state       = var.global_remote_state
+  remote_state_consumer_ids = var.remote_state_consumer_workspaces
 
   lifecycle {
     ignore_changes = [

@@ -43,6 +43,38 @@ variable "execution_mode" {
   }
 }
 
+variable "queue_all_runs" {
+  description = "(Optional) Whether the workspace should start automatically performing runs immediately after its creation. Defaults to `true`. When set to `false`, runs triggered by a webhook (such as a commit in VCS) will not be queued until at least one run has been manually queued."
+  type        = bool
+  default     = true
+  nullable    = false
+}
+
+variable "global_remote_state" {
+  description = <<EOF
+  (Optional) Whether the workspace allows all workspaces in the organization to access its state data during runs. If `false`, then only specifically approved workspaces can access its state. By default, HashiCorp recommends you do not allow other workspaces to access their state. We recommend that you follow the principle of least privilege and only enable state access between workspaces that specifically need information from each other. Defaults to `false`.
+  EOF
+  type        = bool
+  default     = false
+  nullable    = false
+}
+
+variable "remote_state_consumer_workspaces" {
+  description = <<EOF
+  (Optional) A set of workspace IDs that will be granted read access to this workspace's remote state data.
+  EOF
+  type        = set(string)
+  default     = []
+  nullable    = false
+}
+
+variable "ssh_key" {
+  description = "(Optional) The ID of an SSH key to assign to the workspace."
+  type        = string
+  default     = null
+  nullable    = true
+}
+
 variable "policy_set" {
   description = <<EOF
   (Optional) The ID of the policy set to configure.

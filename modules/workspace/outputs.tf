@@ -35,6 +35,26 @@ output "execution_mode" {
   value       = tfe_workspace_settings.this.execution_mode
 }
 
+output "queue_all_runs" {
+  description = "Whether the workspace is configured to automatically queue all runs."
+  value       = tfe_workspace.this.queue_all_runs
+}
+
+output "global_remote_state" {
+  description = "Whether the workspace allows all workspaces in the organization to access its state data during runs."
+  value       = tfe_workspace_settings.this.global_remote_state
+}
+
+output "remote_state_consumer_workspaces" {
+  description = "A set of workspace IDs that have read access to this workspace's remote state data."
+  value       = tfe_workspace_settings.this.remote_state_consumer_ids
+}
+
+output "ssh_key" {
+  description = "The ID of the SSH key assigned to the workspace."
+  value       = tfe_workspace.this.ssh_key_id
+}
+
 output "policy_set" {
   description = "The ID of the policy set configured."
   value       = one(tfe_workspace_policy_set.this[*].policy_set_id)

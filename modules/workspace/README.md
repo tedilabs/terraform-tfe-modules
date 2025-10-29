@@ -45,9 +45,13 @@ No modules.
 | <a name="input_description"></a> [description](#input\_description) | (Optional) A description to help you identify the workspace. | `string` | `"Managed by Terraform."` | no |
 | <a name="input_exclusive_tags_enabled"></a> [exclusive\_tags\_enabled](#input\_exclusive\_tags\_enabled) | (Optional) Whether to explicitly ignore which are not defined by this module. Defaults to `true`. | `bool` | `true` | no |
 | <a name="input_execution_mode"></a> [execution\_mode](#input\_execution\_mode) | (Optional) The execution mode for the workspace. Valid values are `local`, `remote` or `agent`. When set to `local`, the workspace will be used for state storage only.<br/>  NOTE: If you omit this attribute, the resource configures the workspace to use your organization's default execution mode (which in turn defaults to `remote`). | `string` | `null` | no |
+| <a name="input_global_remote_state"></a> [global\_remote\_state](#input\_global\_remote\_state) | (Optional) Whether the workspace allows all workspaces in the organization to access its state data during runs. If `false`, then only specifically approved workspaces can access its state. By default, HashiCorp recommends you do not allow other workspaces to access their state. We recommend that you follow the principle of least privilege and only enable state access between workspaces that specifically need information from each other. Defaults to `false`. | `bool` | `false` | no |
 | <a name="input_organization"></a> [organization](#input\_organization) | (Optional) A name of the organization. If omitted, organization must be defined in the provider config. | `string` | `null` | no |
 | <a name="input_policy_set"></a> [policy\_set](#input\_policy\_set) | (Optional) The ID of the policy set to configure. | `string` | `null` | no |
 | <a name="input_project"></a> [project](#input\_project) | (Optional) The ID of the project where the workspace should be created. | `string` | `null` | no |
+| <a name="input_queue_all_runs"></a> [queue\_all\_runs](#input\_queue\_all\_runs) | (Optional) Whether the workspace should start automatically performing runs immediately after its creation. Defaults to `true`. When set to `false`, runs triggered by a webhook (such as a commit in VCS) will not be queued until at least one run has been manually queued. | `bool` | `true` | no |
+| <a name="input_remote_state_consumer_workspaces"></a> [remote\_state\_consumer\_workspaces](#input\_remote\_state\_consumer\_workspaces) | (Optional) A set of workspace IDs that will be granted read access to this workspace's remote state data. | `set(string)` | `[]` | no |
+| <a name="input_ssh_key"></a> [ssh\_key](#input\_ssh\_key) | (Optional) The ID of an SSH key to assign to the workspace. | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | (Optional) A map of tags to add to all resources. | `map(string)` | `{}` | no |
 | <a name="input_team_access"></a> [team\_access](#input\_team\_access) | (Optional) A configurations for team access to the workspace. Each item of `team_access` block as defined below.<br/>    (Required) `team` - The ID of the team to grant access to the workspace.<br/>    (Optional) `role` - The role to assign to the team for the workspace. Valid values are `READ`, `PLAN`, `WRITE`, `ADMIN`, or `CUSTOM`. Defaults to `READ`.<br/>      `READ` - Baseline permissions for reading a workspace<br/>      `PLAN` - Read permissions plus the ability to create runs<br/>      `WRITE` - Read, plan and write permissions<br/>      `ADMIN` - Full control of the workspace<br/>      `CUSTOM` - Create a custom permission set for this team | <pre>list(object({<br/>    team = string<br/>    role = optional(string, "READ")<br/>  }))</pre> | `[]` | no |
 | <a name="input_variable_set"></a> [variable\_set](#input\_variable\_set) | (Optional) A name of the variable set to configure. | `string` | `null` | no |
@@ -58,11 +62,15 @@ No modules.
 |------|-------------|
 | <a name="output_description"></a> [description](#output\_description) | The description of the workspace. |
 | <a name="output_execution_mode"></a> [execution\_mode](#output\_execution\_mode) | The execution mode for the workspace. |
+| <a name="output_global_remote_state"></a> [global\_remote\_state](#output\_global\_remote\_state) | Whether the workspace allows all workspaces in the organization to access its state data during runs. |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the workspace. |
 | <a name="output_name"></a> [name](#output\_name) | The name of the workspace. |
 | <a name="output_organization"></a> [organization](#output\_organization) | The name of the organization. |
 | <a name="output_policy_set"></a> [policy\_set](#output\_policy\_set) | The ID of the policy set configured. |
 | <a name="output_project"></a> [project](#output\_project) | The project which the workspace belongs to. |
+| <a name="output_queue_all_runs"></a> [queue\_all\_runs](#output\_queue\_all\_runs) | Whether the workspace is configured to automatically queue all runs. |
+| <a name="output_remote_state_consumer_workspaces"></a> [remote\_state\_consumer\_workspaces](#output\_remote\_state\_consumer\_workspaces) | A set of workspace IDs that have read access to this workspace's remote state data. |
+| <a name="output_ssh_key"></a> [ssh\_key](#output\_ssh\_key) | The ID of the SSH key assigned to the workspace. |
 | <a name="output_statistics"></a> [statistics](#output\_statistics) | The statistics of the workspace. |
 | <a name="output_team_access"></a> [team\_access](#output\_team\_access) | The team access configurations for the workspace. |
 | <a name="output_url"></a> [url](#output\_url) | The URL to the browsable HTML overview of the workspace. |
