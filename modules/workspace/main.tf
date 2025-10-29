@@ -33,14 +33,6 @@ resource "tfe_workspace" "this" {
 
   tags                   = var.tags
   ignore_additional_tags = var.exclusive_tags_enabled
-
-  lifecycle {
-    ignore_changes = [
-      global_remote_state,
-      operations,
-      remote_state_consumer_ids,
-    ]
-  }
 }
 
 
