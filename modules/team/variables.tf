@@ -34,6 +34,56 @@ variable "sso_team_id" {
   nullable    = true
 }
 
+variable "project_access" {
+  description = <<EOF
+  (Optional) The level of access to projects within the organization. Valid values are `NONE`, `READ`, or `MANAGE`. Defaults to `NONE`.
+    `NONE` - No access to projects.
+    `READ` - Allow members to view all projects within the organization.
+    `MANAGE` - Allow members to create and administrate all projects within the organization.
+  EOF
+  type        = string
+  default     = "NONE"
+  nullable    = false
+
+  validation {
+    condition     = contains(["NONE", "READ", "MANAGE"], var.project_access)
+    error_message = "Valid values for `project_access` are `NONE`, `READ`, or `MANAGE`."
+  }
+}
+
+variable "workspace_access" {
+  description = <<EOF
+  (Optional) The level of access to workspaces within the organization. Valid values are `NONE`, `READ`, or `MANAGE`. Defaults to `NONE`.
+    `NONE` - No access to workspaces.
+    `READ` - Allow members to view all workspaces in this organization.
+    `MANAGE` - Allow members to create and administrate all workspaces within the organization.
+  EOF
+  type        = string
+  default     = "NONE"
+  nullable    = false
+
+  validation {
+    condition     = contains(["NONE", "READ", "MANAGE"], var.workspace_access)
+    error_message = "Valid values for `workspace_access` are `NONE`, `READ`, or `MANAGE`."
+  }
+}
+
+variable "team_access" {
+  description = <<EOF
+  (Optional) The level of access to teams within the organization. Valid values are `NONE` or `MANAGE`. Defaults to `NONE`.
+    `NONE` - No access to manage teams.
+    `MANAGE` - Allow members to create, update, and delete teams.
+  EOF
+  type        = string
+  default     = "NONE"
+  nullable    = false
+
+  validation {
+    condition     = contains(["NONE", "MANAGE"], var.team_access)
+    error_message = "Valid values for `team_access` are `NONE` or `MANAGE`."
+  }
+}
+
 variable "exclusive_membership_management_enabled" {
   description = "(Optional) Whether to enable exclusive management for members of the team. This includes removal of team members which are not explicitly configured. Defaults to `false`."
   type        = bool

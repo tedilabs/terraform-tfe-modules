@@ -23,6 +23,21 @@ output "sso_team_id" {
   value       = tfe_team.this.sso_team_id
 }
 
+output "project_access" {
+  description = "The level of access to projects within the organization."
+  value       = var.project_access
+}
+
+output "workspace_access" {
+  description = "The level of access to workspaces within the organization."
+  value       = var.workspace_access
+}
+
+output "team_access" {
+  description = "The level of access to teams within the organization."
+  value       = var.team_access
+}
+
 # output "debug" {
 #   value = {
 #     for k, v in tfe_team.this :
