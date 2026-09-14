@@ -11,15 +11,15 @@ This module creates following resources.
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.12 |
 | <a name="requirement_tfe"></a> [tfe](#requirement\_tfe) | >= 0.68 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
-| <a name="provider_tfe"></a> [tfe](#provider\_tfe) | 0.70.0 |
+| ---- | ------- |
+| <a name="provider_tfe"></a> [tfe](#provider\_tfe) | >= 0.68 |
 
 ## Modules
 
@@ -28,7 +28,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [tfe_team.this](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/team) | resource |
 | [tfe_team_organization_member.this](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/team_organization_member) | resource |
 | [tfe_team_organization_members.this](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/team_organization_members) | resource |
@@ -36,7 +36,7 @@ No modules.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_name"></a> [name](#input\_name) | (Required) The name of the team. | `string` | n/a | yes |
 | <a name="input_exclusive_membership_management_enabled"></a> [exclusive\_membership\_management\_enabled](#input\_exclusive\_membership\_management\_enabled) | (Optional) Whether to enable exclusive management for members of the team. This includes removal of team members which are not explicitly configured. Defaults to `false`. | `bool` | `false` | no |
 | <a name="input_members"></a> [members](#input\_members) | (Optional) A set of Terraform Cloud user IDs to be members of the team. | `set(string)` | `[]` | no |
@@ -50,7 +50,7 @@ No modules.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the team. |
 | <a name="output_name"></a> [name](#output\_name) | The name of the team. |
 | <a name="output_organization"></a> [organization](#output\_organization) | The name of the organization. |

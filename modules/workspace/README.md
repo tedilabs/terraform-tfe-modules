@@ -12,15 +12,15 @@ This module creates following resources.
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.12 |
 | <a name="requirement_tfe"></a> [tfe](#requirement\_tfe) | >= 0.68 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
-| <a name="provider_tfe"></a> [tfe](#provider\_tfe) | 0.68.2 |
+| ---- | ------- |
+| <a name="provider_tfe"></a> [tfe](#provider\_tfe) | >= 0.68 |
 
 ## Modules
 
@@ -29,7 +29,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [tfe_team_access.this](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/team_access) | resource |
 | [tfe_workspace.this](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/workspace) | resource |
 | [tfe_workspace_policy_set.this](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/workspace_policy_set) | resource |
@@ -40,7 +40,7 @@ No modules.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_name"></a> [name](#input\_name) | (Required) The name of the workspace. | `string` | n/a | yes |
 | <a name="input_description"></a> [description](#input\_description) | (Optional) A description to help you identify the workspace. | `string` | `"Managed by Terraform."` | no |
 | <a name="input_exclusive_tags_enabled"></a> [exclusive\_tags\_enabled](#input\_exclusive\_tags\_enabled) | (Optional) Whether to explicitly ignore which are not defined by this module. Defaults to `true`. | `bool` | `true` | no |
@@ -59,7 +59,7 @@ No modules.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_description"></a> [description](#output\_description) | The description of the workspace. |
 | <a name="output_execution_mode"></a> [execution\_mode](#output\_execution\_mode) | The execution mode for the workspace. |
 | <a name="output_global_remote_state"></a> [global\_remote\_state](#output\_global\_remote\_state) | Whether the workspace allows all workspaces in the organization to access its state data during runs. |
