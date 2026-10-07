@@ -1,3 +1,13 @@
+locals {
+  metadata = {
+    package = "terraform-tfe-modules"
+    version = trimspace(file("${path.module}/../../VERSION"))
+    module  = basename(path.module)
+    name    = var.name
+  }
+}
+
+
 data "tfe_teams" "this" {
   organization = var.organization
 }
