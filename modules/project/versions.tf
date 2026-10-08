@@ -6,5 +6,9 @@ terraform {
       source  = "hashicorp/tfe"
       version = ">= 0.68"
     }
+    telemetry = {
+      source  = "tedilabs/telemetry"
+      version = ">= 0.1.1"
+    }
   }
 }
