@@ -1,4 +1,11 @@
 locals {
+  metadata = {
+    package = "terraform-tfe-modules"
+    version = trimspace(file("${path.module}/../../VERSION"))
+    module  = basename(path.module)
+    name    = var.name
+  }
+
   organization_access_enabled = anytrue([
     var.project_access != "NONE",
     var.workspace_access != "NONE",
