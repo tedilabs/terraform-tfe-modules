@@ -1,5 +1,8 @@
 # Modules
 - color: "fbca04"
+  description: "This issue or pull request is related to registry module management."
+  name: ":floppy_disk: module"
+- color: "fbca04"
   description: "This issue or pull request is related to project module."
   name: ":floppy_disk: project"
 - color: "fbca04"

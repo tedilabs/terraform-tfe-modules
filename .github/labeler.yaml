@@ -1,4 +1,10 @@
 # Modules
+":floppy_disk: module":
+- changed-files:
+  - any-glob-to-any-file:
+    - modules/module/**/*
+    - examples/module/**/*
+
 ":floppy_disk: project":
 - changed-files:
   - any-glob-to-any-file:
