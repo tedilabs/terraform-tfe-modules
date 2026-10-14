@@ -42,7 +42,7 @@ run "public" {
 }
 
 run "monorepo_tags" {
-  command = plan
+  command = apply
 
   variables {
     vcs_repository = {
@@ -61,7 +61,7 @@ run "monorepo_tags" {
       tfe_registry_module.this.vcs_repo[0].tag_prefix == "network-" &&
       tfe_registry_module.this.name == "network" &&
       tfe_registry_module.this.module_provider == "aws" &&
-      !tfe_registry_module.this.test_config[0].tests_enabled
+      length(tfe_registry_module.this.test_config) == 0
     )
     error_message = "Monorepo modules must preserve explicit identity and use tag-based publishing by default."
   }

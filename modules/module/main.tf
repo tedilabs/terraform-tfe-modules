@@ -41,7 +41,7 @@ resource "tfe_registry_module" "this" {
   }
 
   dynamic "test_config" {
-    for_each = var.vcs_repository != null ? [var.vcs_repository] : []
+    for_each = try(var.vcs_repository.branch, null) != null ? [var.vcs_repository] : []
 
     content {
       tests_enabled = var.tests_enabled
