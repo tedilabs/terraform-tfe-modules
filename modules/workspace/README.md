@@ -43,6 +43,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_name"></a> [name](#input\_name) | (Required) The name of the workspace. | `string` | n/a | yes |
+| <a name="input_agent_pool"></a> [agent\_pool](#input\_agent\_pool) | (Optional) The ID of the agent pool to use for the workspace. Required when `execution_mode` is `agent`, and must not be set otherwise. | `string` | `null` | no |
 | <a name="input_description"></a> [description](#input\_description) | (Optional) A description to help you identify the workspace. | `string` | `"Managed by Terraform."` | no |
 | <a name="input_exclusive_tags_enabled"></a> [exclusive\_tags\_enabled](#input\_exclusive\_tags\_enabled) | (Optional) Whether to explicitly ignore which are not defined by this module. Defaults to `true`. | `bool` | `true` | no |
 | <a name="input_execution_mode"></a> [execution\_mode](#input\_execution\_mode) | (Optional) The execution mode for the workspace. Valid values are `local`, `remote` or `agent`. When set to `local`, the workspace will be used for state storage only.<br/>  NOTE: If you omit this attribute, the resource configures the workspace to use your organization's default execution mode (which in turn defaults to `remote`). | `string` | `null` | no |
