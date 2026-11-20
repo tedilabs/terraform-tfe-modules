@@ -123,12 +123,11 @@ variable "team_access" {
   description = <<EOF
   (Optional) A configurations for team access to the workspace. Each item of `team_access` block as defined below.
     (Required) `team` - The ID of the team to grant access to the workspace.
-    (Optional) `role` - The role to assign to the team for the workspace. Valid values are `READ`, `PLAN`, `WRITE`, `ADMIN`, or `CUSTOM`. Defaults to `READ`.
+    (Optional) `role` - The role to assign to the team for the workspace. Valid values are `READ`, `PLAN`, `WRITE`, or `ADMIN`. Defaults to `READ`.
       `READ` - Baseline permissions for reading a workspace
       `PLAN` - Read permissions plus the ability to create runs
       `WRITE` - Read, plan and write permissions
       `ADMIN` - Full control of the workspace
-      `CUSTOM` - Create a custom permission set for this team
   EOF
   type = list(object({
     team = string
@@ -140,8 +139,8 @@ variable "team_access" {
   validation {
     condition = alltrue([
       for access in var.team_access :
-      contains(["READ", "PLAN", "WRITE", "ADMIN", "CUSTOM"], access.role)
+      contains(["READ", "PLAN", "WRITE", "ADMIN"], access.role)
     ])
-    error_message = "Valid values for `role` are `READ`, `PLAN`, `WRITE`, `ADMIN`, or `CUSTOM`."
+    error_message = "Valid values for `role` are `READ`, `PLAN`, `WRITE`, or `ADMIN`."
   }
 }
