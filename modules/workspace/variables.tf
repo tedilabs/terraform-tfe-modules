@@ -43,6 +43,18 @@ variable "execution_mode" {
   }
 }
 
+variable "agent_pool" {
+  description = "(Optional) The ID of the agent pool to use for the workspace. Required when `execution_mode` is `agent`, and must not be set otherwise."
+  type        = string
+  default     = null
+  nullable    = true
+
+  validation {
+    condition     = (var.execution_mode == "agent") == (var.agent_pool != null)
+    error_message = "Value for `agent_pool` is required when `execution_mode` is `agent`, and must be null otherwise."
+  }
+}
+
 variable "queue_all_runs" {
   description = "(Optional) Whether the workspace should start automatically performing runs immediately after its creation. Defaults to `true`. When set to `false`, runs triggered by a webhook (such as a commit in VCS) will not be queued until at least one run has been manually queued."
   type        = bool

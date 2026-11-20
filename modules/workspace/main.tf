@@ -54,6 +54,7 @@ resource "tfe_workspace_settings" "this" {
   workspace_id = tfe_workspace.this.id
 
   execution_mode            = var.execution_mode
+  agent_pool_id             = var.agent_pool
   global_remote_state       = var.global_remote_state
   remote_state_consumer_ids = var.remote_state_consumer_workspaces
 
