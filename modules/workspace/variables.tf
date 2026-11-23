@@ -113,7 +113,7 @@ variable "tags" {
 }
 
 variable "exclusive_tags_enabled" {
-  description = "(Optional) Whether to explicitly ignore which are not defined by this module. Defaults to `true`."
+  description = "(Optional) Whether to explicitly ignore tags which are not defined by this module. Defaults to `true`."
   type        = bool
   default     = true
   nullable    = false
@@ -121,7 +121,7 @@ variable "exclusive_tags_enabled" {
 
 variable "team_access" {
   description = <<EOF
-  (Optional) A configurations for team access to the workspace. Each item of `team_access` block as defined below.
+  (Optional) Configurations for team access to the workspace. Each item of `team_access` block as defined below.
     (Required) `team` - The ID of the team to grant access to the workspace.
     (Optional) `role` - The role to assign to the team for the workspace. Valid values are `READ`, `PLAN`, `WRITE`, or `ADMIN`. Defaults to `READ`.
       `READ` - Baseline permissions for reading a workspace
