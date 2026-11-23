@@ -3,7 +3,6 @@
 This module creates following resources.
 
 - `tfe_team`
-- `tfe_team_notification_configuration` (optional)
 - `tfe_team_organization_member` (optional)
 - `tfe_team_organization_members` (optional)
 
@@ -40,7 +39,7 @@ No modules.
 | ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_name"></a> [name](#input\_name) | (Required) The name of the team. | `string` | n/a | yes |
 | <a name="input_exclusive_membership_management_enabled"></a> [exclusive\_membership\_management\_enabled](#input\_exclusive\_membership\_management\_enabled) | (Optional) Whether to enable exclusive management for members of the team. This includes removal of team members which are not explicitly configured. Defaults to `false`. | `bool` | `false` | no |
-| <a name="input_members"></a> [members](#input\_members) | (Optional) A set of Terraform Cloud user IDs to be members of the team. | `set(string)` | `[]` | no |
+| <a name="input_members"></a> [members](#input\_members) | (Optional) A set of organization membership IDs (`ou-...`) to be members of the team. | `set(string)` | `[]` | no |
 | <a name="input_organization"></a> [organization](#input\_organization) | (Optional) A name of the organization. If omitted, organization must be defined in the provider config. | `string` | `null` | no |
 | <a name="input_project_access"></a> [project\_access](#input\_project\_access) | (Optional) The level of access to projects within the organization. Valid values are `NONE`, `READ`, or `MANAGE`. Defaults to `NONE`.<br/>    `NONE` - No access to projects.<br/>    `READ` - Allow members to view all projects within the organization.<br/>    `MANAGE` - Allow members to create and administrate all projects within the organization. | `string` | `"NONE"` | no |
 | <a name="input_sso_team_id"></a> [sso\_team\_id](#input\_sso\_team\_id) | (Optional) The ID of the SSO team to link to this team. | `string` | `null` | no |

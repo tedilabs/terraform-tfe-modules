@@ -92,7 +92,7 @@ variable "exclusive_membership_management_enabled" {
 }
 
 variable "members" {
-  description = "(Optional) A set of Terraform Cloud user IDs to be members of the team."
+  description = "(Optional) A set of organization membership IDs (`ou-...`) to be members of the team."
   type        = set(string)
   default     = []
   nullable    = false
