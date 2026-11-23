@@ -34,7 +34,7 @@ output "team_access" {
     for access in tfe_team_project_access.this : {
       team = {
         id   = access.team_id
-        name = local.team_names[access.team_id]
+        name = lookup(local.team_names, access.team_id, null)
       }
       role = upper(access.access)
     }
