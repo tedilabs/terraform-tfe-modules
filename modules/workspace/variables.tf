@@ -98,7 +98,7 @@ variable "policy_set" {
 
 variable "variable_set" {
   description = <<EOF
-  (Optional) A name of the variable set to configure.
+  (Optional) The ID of the variable set to configure.
   EOF
   type        = string
   default     = null
