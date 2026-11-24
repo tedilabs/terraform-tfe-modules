@@ -24,7 +24,7 @@ terraform plan \
 
 | Name | Version |
 | ---- | ------- |
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.12 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.16 |
 | <a name="requirement_tfe"></a> [tfe](#requirement\_tfe) | ~> 0.74, >= 0.74.1 |
 
 ## Providers

@@ -27,7 +27,7 @@ Run `terraform init` and `terraform test` from this directory. Tests use a mocke
 
 | Name | Version |
 | ---- | ------- |
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.12 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.16 |
 | <a name="requirement_telemetry"></a> [telemetry](#requirement\_telemetry) | >= 0.2.0 |
 | <a name="requirement_tfe"></a> [tfe](#requirement\_tfe) | >= 0.74.1 |
 
